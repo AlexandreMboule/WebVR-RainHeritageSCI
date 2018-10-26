@@ -39,18 +39,14 @@
   <a-sky id="image-360" radius="10" src="#city"></a-sky>
 
   <!-- Link we will build. -->
-  <!-- Pass image sources to the template (instance of the template) -->
-<a-entity template="src: #plane" data-thumb="#city-thumb"></a-entity>
-<a-entity template="src: #plane" data-thumb="#cubes-thumb"></a-entity>
-<a-entity template="src: #plane" data-thumb="#sechelt-thumb"></a-entity>
+  <!-- Pass image sources to the template (instance of the template); layout so the links don't overlap -->
+<a-entity id="links" layout="layout: line; margin: 1.5" position="-3 -1 -4">
+  <a-entity template="src: #plane" data-thumb="#city-thumb"></a-entity>
+  <a-entity template="src: #plane" data-thumb="#cubes-thumb"></a-entity>
+  <a-entity template="src: #plane" data-thumb="#sechelt-thumb"></a-entity>
+</a-entity>
       
-      
-      <a-entity class="link"
-             geometry="primitive: plane; height: 1; width: 1"
-             material="shader: flat; src: #cubes-thumb"
-             sound="on: click; src: #click-sound"></a-entity>
-
-      
+       
       
   <!-- Camera + Cursor. -->
   <a-camera>
