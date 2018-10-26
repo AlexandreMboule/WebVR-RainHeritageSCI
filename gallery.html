@@ -61,6 +61,41 @@
                    from="1 1 1" to="0.1 0.1 0.1" dur="1500"></a-animation>
     </a-cursor>
   </a-camera>
+      
+      
+      AFRAME.registerComponent('set-image', {
+  schema: {
+    on: {type: 'string'},
+    target: {type: 'selector'},
+    src: {type: 'string'},
+    dur: {type: 'number', default: 300}
+  },
+
+  init: function () {
+  var data = this.data;
+  var el = this.el;
+
+  this.setupFadeAnimation();
+
+  el.addEventListener(data.on, function () {
+    // Fade out image.
+    data.target.emit('set-image-fade');
+    // Wait for fade to complete.
+    setTimeout(function () {
+      // Set image.
+      data.target.setAttribute('material', 'src', data.src);
+    }, data.dur);
+  });
+},
+
+  setupFadeAnimation: function () {
+    // Appends an <a-animation> that fades to black.
+  }
+});
+      
+      
+      
+      
 </a-scene>
 
   </body>
